@@ -27,6 +27,12 @@ const {data, ...indexes} = initData(sourceData);
  */
 function collectState() {
     const state = processFormData(new FormData(sampleTable.container));
+
+    state.total = [state.totalFrom, state.totalTo];
+    delete state.totalFrom;
+    delete state.totalTo;
+    //формирование массива total в формат, который ожидает компоратор
+
     const rowsPerPage = parseInt(state.rowsPerPage);  // приведём количество страниц к числу
     const page = parseInt(state.page ?? 1);  //преобразует номер страницы в число
 
